@@ -1,9 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 exports.summarizeText = async(req, res) => {
-    const apiUrl = 'https://sys-integration-instance.cognitiveservices.azure.com/language/analyze-text/jobs?api-version=2023-11-15-preview';
-    const subscriptionKey = '1c5e0cc661944bc3ad307f8b6f6d3fb0'; // Replace with your actual subscription key
-
+    const apiUrl = process.env.TEXT_API_URL;
+    const subscriptionKey = process.env.SUBSCRIPTION_KEY;
     
     let count = 1;
     const documents = [];
@@ -82,8 +81,8 @@ function concatenateTextFields(data) {
 
 
 exports.summarizeConversations = async(req, res) => {
-    const apiUrl = 'https://sys-integration-instance.cognitiveservices.azure.com/language/analyze-conversations/jobs?api-version=2023-11-15-preview';
-    const subscriptionKey = '1c5e0cc661944bc3ad307f8b6f6d3fb0'; // Replace with your actual subscription key
+    const apiUrl = process.env.CONVERSATION_API_URL;
+    const subscriptionKey = process.env.SUBSCRIPTION_KEY;
 
 
     const payload = req.body;
